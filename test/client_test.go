@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"compress/gzip"
 	"encoding/csv"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/matthiasbruns/awin-go/awin"
@@ -304,7 +305,10 @@ func TestFetchDataFeed(t *testing.T) {
 	for i, expectedRow := range *expectedRows {
 		receivedRow := (*result)[i]
 		if expectedRow != receivedRow {
-			t.Fatalf("Invalid row parsed\nexpected '%v'\nreceived '%v'", expectedRow, receivedRow)
+
+			eJson, _ := json.Marshal(expectedRow)
+			rJson, _ := json.Marshal(receivedRow)
+			t.Fatalf("Invalid row parsed\nexpected '%v'\nreceived '%v'", string(eJson), string(rJson))
 		}
 	}
 }
