@@ -87,8 +87,11 @@ func (c AwinClient) FetchDataFeed(options *DataFeedOptions) (*[]DataFeedEntry, e
 	}
 
 	url := fmt.Sprintf(dataFeedUrl, baseUrl, options.ApiKey, options.Language, strings.Join(options.FeedIds, ","), defaultDataFeedColumnsParam, ",", showAdult)
-	fmt.Println(url)
 
+	return c.FetchDataFeedFromUrl(url)
+}
+
+func (c AwinClient) FetchDataFeedFromUrl(url string) (*[]DataFeedEntry, error) {
 	request, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return nil, err
