@@ -1,4 +1,2 @@
 github.com/gocarina/gocsv v0.0.0-20211020200912-82fc2684cc48 h1:hLeicZW4XBuaISuJPfjkprg0SP0xxsQmb31aJZ6lnIw=
 github.com/gocarina/gocsv v0.0.0-20211020200912-82fc2684cc48/go.mod h1:5YoVOkjYAQumqlV356Hj3xeYh4BdZuLE0/nRkf2NKkI=
-github.com/magefile/mage v1.11.0 h1:C/55Ywp9BpgVVclD3lRnSYCwXTYxmSppIgLeDYlNuls=
-github.com/magefile/mage v1.11.0/go.mod h1:z5UZb/iS3GoOSn0JgWuiw7dxlurVYTu+/jHXqQg881A=

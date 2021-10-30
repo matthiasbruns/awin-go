@@ -8,6 +8,7 @@ import (
 	"encoding/csv"
 	"errors"
 	"fmt"
+	"github.com/gocarina/gocsv"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -87,7 +88,6 @@ func (c AwinClient) FetchDataFeed(options *DataFeedOptions) (*[]DataFeedEntry, e
 	}
 
 	url := fmt.Sprintf(dataFeedUrl, baseUrl, options.ApiKey, options.Language, strings.Join(options.FeedIds, ","), defaultDataFeedColumnsParam, ",", showAdult)
-	fmt.Println(url)
 
 	request, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -124,41 +124,10 @@ func (c AwinClient) FetchDataFeed(options *DataFeedOptions) (*[]DataFeedEntry, e
 }
 
 func parseCSVToDataFeedRow(r io.Reader) (*[]DataFeedListRow, error) {
-	reader := csv.NewReader(r)
 	var rows []DataFeedListRow
-	columnNamesSkipped := false
-	for {
-		record, err := reader.Read()
 
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			return nil, err
-		}
-
-		// Skip column names from csv
-		if !columnNamesSkipped {
-			columnNamesSkipped = true
-			continue
-		}
-
-		row := DataFeedListRow{
-			AdvertiserID:     record[0],
-			AdvertiserName:   record[1],
-			PrimaryRegion:    record[2],
-			MembershipStatus: record[3],
-			FeedID:           record[4],
-			FeedName:         record[5],
-			Language:         record[6],
-			Vertical:         record[7],
-			LastImported:     record[8],
-			LastChecked:      record[9],
-			NoOfProducts:     record[10],
-			URL:              record[11],
-		}
-
-		rows = append(rows, row)
+	if err := gocsv.Unmarshal(r, &rows); err != nil {
+		return nil, err
 	}
 
 	return &rows, nil
