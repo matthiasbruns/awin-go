@@ -5,9 +5,9 @@ package awin
 import (
 	"bytes"
 	"compress/gzip"
-	"encoding/csv"
 	"errors"
 	"fmt"
+	"github.com/gocarina/gocsv"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -127,156 +127,20 @@ func (c AwinClient) FetchDataFeedFromUrl(url string) (*[]DataFeedEntry, error) {
 }
 
 func parseCSVToDataFeedRow(r io.Reader) (*[]DataFeedListRow, error) {
-	reader := csv.NewReader(r)
 	var rows []DataFeedListRow
-	columnNamesSkipped := false
-	for {
-		record, err := reader.Read()
 
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			return nil, err
-		}
-
-		// Skip column names from csv
-		if !columnNamesSkipped {
-			columnNamesSkipped = true
-			continue
-		}
-
-		row := DataFeedListRow{
-			AdvertiserID:     record[0],
-			AdvertiserName:   record[1],
-			PrimaryRegion:    record[2],
-			MembershipStatus: record[3],
-			FeedID:           record[4],
-			FeedName:         record[5],
-			Language:         record[6],
-			Vertical:         record[7],
-			LastImported:     record[8],
-			LastChecked:      record[9],
-			NoOfProducts:     record[10],
-			URL:              record[11],
-		}
-
-		rows = append(rows, row)
+	if err := gocsv.Unmarshal(r, &rows); err != nil {
+		return nil, err
 	}
 
 	return &rows, nil
 }
 
 func parseCSVToDataFeedEntry(r io.Reader) (*[]DataFeedEntry, error) {
-	reader := csv.NewReader(r)
 	var entries []DataFeedEntry
-	columnNamesSkipped := false
-	for {
-		record, err := reader.Read()
 
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			return nil, err
-		}
-
-		// Skip column names from csv
-		if !columnNamesSkipped {
-			columnNamesSkipped = true
-			continue
-		}
-
-		entry := DataFeedEntry{
-			AwDeepLink:                    record[0],
-			ProductName:                   record[1],
-			AwProductId:                   record[2],
-			MerchantProductId:             record[3],
-			MerchantImageUrl:              record[4],
-			Description:                   record[5],
-			MerchantCategory:              record[6],
-			SearchPrice:                   record[7],
-			MerchantName:                  record[8],
-			MerchantId:                    record[9],
-			CategoryName:                  record[10],
-			CategoryId:                    record[11],
-			AwImageUrl:                    record[12],
-			Currency:                      record[13],
-			StorePrice:                    record[14],
-			DeliveryCost:                  record[15],
-			MerchantDeepLink:              record[16],
-			Language:                      record[17],
-			LastUpdated:                   record[18],
-			DisplayPrice:                  record[19],
-			DataFeedId:                    record[20],
-			BrandName:                     record[21],
-			BrandId:                       record[22],
-			Colour:                        record[23],
-			ProductShortDescription:       record[24],
-			Specifications:                record[25],
-			Condition:                     record[26],
-			ProductModel:                  record[27],
-			ModelNumber:                   record[28],
-			Dimensions:                    record[29],
-			Keywords:                      record[30],
-			PromotionalText:               record[31],
-			ProductType:                   record[32],
-			CommissionGroup:               record[33],
-			MerchantProductCategoryPath:   record[34],
-			MerchantProductSecondCategory: record[35],
-			MerchantProductThirdCategory:  record[36],
-			RrpPrice:                      record[37],
-			Saving:                        record[38],
-			SavingsPercent:                record[39],
-			BasePrice:                     record[40],
-			BasePriceAmount:               record[41],
-			BasePriceText:                 record[42],
-			ProductPriceOld:               record[43],
-			DeliveryRestrictions:          record[44],
-			DeliveryWeight:                record[45],
-			Warranty:                      record[46],
-			TermsOfContract:               record[47],
-			DeliveryTime:                  record[48],
-			InStock:                       record[49],
-			StockQuantity:                 record[50],
-			ValidFrom:                     record[51],
-			ValidTo:                       record[52],
-			IsForSale:                     record[53],
-			WebOffer:                      record[54],
-			PreOrder:                      record[55],
-			StockStatus:                   record[56],
-			SizeStockStatus:               record[57],
-			SizeStockAmount:               record[58],
-			MerchantThumbUrl:              record[59],
-			LargeImage:                    record[60],
-			AlternateImage:                record[61],
-			AwThumbUrl:                    record[62],
-			AlternateImageTwo:             record[63],
-			AlternateImageThree:           record[64],
-			AlternateImageFour:            record[65],
-			Reviews:                       record[66],
-			AverageRating:                 record[67],
-			Rating:                        record[68],
-			NumberAvailable:               record[69],
-			Custom1:                       record[70],
-			Custom2:                       record[71],
-			Custom3:                       record[72],
-			Custom4:                       record[73],
-			Custom5:                       record[74],
-			Custom6:                       record[75],
-			Custom7:                       record[76],
-			Custom8:                       record[77],
-			Custom9:                       record[78],
-			Ean:                           record[79],
-			Isbn:                          record[80],
-			Upc:                           record[81],
-			Mpn:                           record[82],
-			ParentProductId:               record[83],
-			ProductGtin:                   record[84],
-			BasketLink:                    record[85],
-		}
-
-		entries = append(entries, entry)
+	if err := gocsv.Unmarshal(r, &entries); err != nil {
+		return nil, err
 	}
 
 	return &entries, nil

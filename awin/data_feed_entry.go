@@ -1,90 +1,90 @@
 package awin
 
 type DataFeedEntry struct {
-	AwDeepLink                    string `json:"aw_deep_link,omitempty"`
-	ProductName                   string `json:"product_name,omitempty"`
-	AwProductId                   string `json:"aw_product_id,omitempty"`
-	MerchantProductId             string `json:"merchant_product_id,omitempty"`
-	MerchantImageUrl              string `json:"merchant_image_url,omitempty"`
-	Description                   string `json:"description,omitempty"`
-	MerchantCategory              string `json:"merchant_category,omitempty"`
-	SearchPrice                   string `json:"search_price,omitempty"`
-	MerchantName                  string `json:"merchant_name,omitempty"`
-	MerchantId                    string `json:"merchant_id,omitempty"`
-	CategoryName                  string `json:"category_name,omitempty"`
-	CategoryId                    string `json:"category_id,omitempty"`
-	AwImageUrl                    string `json:"aw_image_url,omitempty"`
-	Currency                      string `json:"currency,omitempty"`
-	StorePrice                    string `json:"store_price,omitempty"`
-	DeliveryCost                  string `json:"delivery_cost,omitempty"`
-	MerchantDeepLink              string `json:"merchant_deep_link,omitempty"`
-	Language                      string `json:"language,omitempty"`
-	LastUpdated                   string `json:"last_updated,omitempty"`
-	DisplayPrice                  string `json:"display_price,omitempty"`
-	DataFeedId                    string `json:"data_feed_id,omitempty"`
-	BrandName                     string `json:"brand_name,omitempty"`
-	BrandId                       string `json:"brand_id,omitempty"`
-	Colour                        string `json:"colour,omitempty"`
-	ProductShortDescription       string `json:"product_short_description,omitempty"`
-	Specifications                string `json:"specifications,omitempty"`
-	Condition                     string `json:"condition,omitempty"`
-	ProductModel                  string `json:"product_model,omitempty"`
-	ModelNumber                   string `json:"model_number,omitempty"`
-	Dimensions                    string `json:"dimensions,omitempty"`
-	Keywords                      string `json:"keywords,omitempty"`
-	PromotionalText               string `json:"promotional_text,omitempty"`
-	ProductType                   string `json:"product_type,omitempty"`
-	CommissionGroup               string `json:"commission_group,omitempty"`
-	MerchantProductCategoryPath   string `json:"merchant_product_category_path,omitempty"`
-	MerchantProductSecondCategory string `json:"merchant_product_second_category,omitempty"`
-	MerchantProductThirdCategory  string `json:"merchant_product_third_category,omitempty"`
-	RrpPrice                      string `json:"rrp_price,omitempty"`
-	Saving                        string `json:"saving,omitempty"`
-	SavingsPercent                string `json:"savings_percent,omitempty"`
-	BasePrice                     string `json:"base_price,omitempty"`
-	BasePriceAmount               string `json:"base_price_amount,omitempty"`
-	BasePriceText                 string `json:"base_price_text,omitempty"`
-	ProductPriceOld               string `json:"product_price_old,omitempty"`
-	DeliveryRestrictions          string `json:"delivery_restrictions,omitempty"`
-	DeliveryWeight                string `json:"delivery_weight,omitempty"`
-	Warranty                      string `json:"warranty,omitempty"`
-	TermsOfContract               string `json:"terms_of_contract,omitempty"`
-	DeliveryTime                  string `json:"delivery_time,omitempty"`
-	InStock                       string `json:"in_stock,omitempty"`
-	StockQuantity                 string `json:"stock_quantity,omitempty"`
-	ValidFrom                     string `json:"valid_from,omitempty"`
-	ValidTo                       string `json:"valid_to,omitempty"`
-	IsForSale                     string `json:"is_for_sale,omitempty"`
-	WebOffer                      string `json:"web_offer,omitempty"`
-	PreOrder                      string `json:"pre_order,omitempty"`
-	StockStatus                   string `json:"stock_status,omitempty"`
-	SizeStockStatus               string `json:"size_stock_status,omitempty"`
-	SizeStockAmount               string `json:"size_stock_amount,omitempty"`
-	MerchantThumbUrl              string `json:"merchant_thumb_url,omitempty"`
-	LargeImage                    string `json:"large_image,omitempty"`
-	AlternateImage                string `json:"alternate_image,omitempty"`
-	AwThumbUrl                    string `json:"aw_thumb_url,omitempty"`
-	AlternateImageTwo             string `json:"alternate_image_two,omitempty"`
-	AlternateImageThree           string `json:"alternate_image_three,omitempty"`
-	AlternateImageFour            string `json:"alternate_image_four,omitempty"`
-	Reviews                       string `json:"reviews,omitempty"`
-	AverageRating                 string `json:"average_rating,omitempty"`
-	Rating                        string `json:"rating,omitempty"`
-	NumberAvailable               string `json:"number_available,omitempty"`
-	Custom1                       string `json:"custom_1,omitempty"`
-	Custom2                       string `json:"custom_2,omitempty"`
-	Custom3                       string `json:"custom_3,omitempty"`
-	Custom4                       string `json:"custom_4,omitempty"`
-	Custom5                       string `json:"custom_5,omitempty"`
-	Custom6                       string `json:"custom_6,omitempty"`
-	Custom7                       string `json:"custom_7,omitempty"`
-	Custom8                       string `json:"custom_8,omitempty"`
-	Custom9                       string `json:"custom_9,omitempty"`
-	Ean                           string `json:"ean,omitempty"`
-	Isbn                          string `json:"isbn,omitempty"`
-	Upc                           string `json:"upc,omitempty"`
-	Mpn                           string `json:"mpn,omitempty"`
-	ParentProductId               string `json:"parent_product_id,omitempty"`
-	ProductGtin                   string `json:"product_gtin,omitempty"`
-	BasketLink                    string `json:"basket_link,omitempty"`
+	AwDeepLink                    string `json:"aw_deep_link,omitempty" csv:"aw_deep_link"`
+	ProductName                   string `json:"product_name,omitempty" csv:"product_name"`
+	AwProductId                   string `json:"aw_product_id,omitempty" csv:"aw_product_id"`
+	MerchantProductId             string `json:"merchant_product_id,omitempty" csv:"merchant_product_id"`
+	MerchantImageUrl              string `json:"merchant_image_url,omitempty" csv:"merchant_image_url"`
+	Description                   string `json:"description,omitempty" csv:"description"`
+	MerchantCategory              string `json:"merchant_category,omitempty" csv:"merchant_category"`
+	SearchPrice                   string `json:"search_price,omitempty" csv:"search_price"`
+	MerchantName                  string `json:"merchant_name,omitempty" csv:"merchant_name"`
+	MerchantId                    string `json:"merchant_id,omitempty" csv:"merchant_id"`
+	CategoryName                  string `json:"category_name,omitempty" csv:"category_name"`
+	CategoryId                    string `json:"category_id,omitempty" csv:"category_id"`
+	AwImageUrl                    string `json:"aw_image_url,omitempty" csv:"aw_image_url"`
+	Currency                      string `json:"currency,omitempty" csv:"currency"`
+	StorePrice                    string `json:"store_price,omitempty" csv:"store_price"`
+	DeliveryCost                  string `json:"delivery_cost,omitempty" csv:"delivery_cost"`
+	MerchantDeepLink              string `json:"merchant_deep_link,omitempty" csv:"merchant_deep_link"`
+	Language                      string `json:"language,omitempty" csv:"language"`
+	LastUpdated                   string `json:"last_updated,omitempty" csv:"last_updated"`
+	DisplayPrice                  string `json:"display_price,omitempty" csv:"display_price"`
+	DataFeedId                    string `json:"data_feed_id,omitempty" csv:"data_feed_id"`
+	BrandName                     string `json:"brand_name,omitempty" csv:"brand_name"`
+	BrandId                       string `json:"brand_id,omitempty" csv:"brand_id"`
+	Colour                        string `json:"colour,omitempty" csv:"colour"`
+	ProductShortDescription       string `json:"product_short_description,omitempty" csv:"product_short_description"`
+	Specifications                string `json:"specifications,omitempty" csv:"specifications"`
+	Condition                     string `json:"condition,omitempty" csv:"condition"`
+	ProductModel                  string `json:"product_model,omitempty" csv:"product_model"`
+	ModelNumber                   string `json:"model_number,omitempty" csv:"model_number"`
+	Dimensions                    string `json:"dimensions,omitempty" csv:"dimensions"`
+	Keywords                      string `json:"keywords,omitempty" csv:"keywords"`
+	PromotionalText               string `json:"promotional_text,omitempty" csv:"promotional_text"`
+	ProductType                   string `json:"product_type,omitempty" csv:"product_type"`
+	CommissionGroup               string `json:"commission_group,omitempty" csv:"commission_group"`
+	MerchantProductCategoryPath   string `json:"merchant_product_category_path,omitempty" csv:"merchant_product_category_path"`
+	MerchantProductSecondCategory string `json:"merchant_product_second_category,omitempty" csv:"merchant_product_second_category"`
+	MerchantProductThirdCategory  string `json:"merchant_product_third_category,omitempty" csv:"merchant_product_third_category"`
+	RrpPrice                      string `json:"rrp_price,omitempty" csv:"rrp_price"`
+	Saving                        string `json:"saving,omitempty" csv:"saving"`
+	SavingsPercent                string `json:"savings_percent,omitempty" csv:"savings_percent"`
+	BasePrice                     string `json:"base_price,omitempty" csv:"base_price"`
+	BasePriceAmount               string `json:"base_price_amount,omitempty" csv:"base_price_amount"`
+	BasePriceText                 string `json:"base_price_text,omitempty" csv:"base_price_text"`
+	ProductPriceOld               string `json:"product_price_old,omitempty" csv:"product_price_old"`
+	DeliveryRestrictions          string `json:"delivery_restrictions,omitempty" csv:"delivery_restrictions"`
+	DeliveryWeight                string `json:"delivery_weight,omitempty" csv:"delivery_weight"`
+	Warranty                      string `json:"warranty,omitempty" csv:"warranty"`
+	TermsOfContract               string `json:"terms_of_contract,omitempty" csv:"terms_of_contract"`
+	DeliveryTime                  string `json:"delivery_time,omitempty" csv:"delivery_time"`
+	InStock                       string `json:"in_stock,omitempty" csv:"in_stock"`
+	StockQuantity                 string `json:"stock_quantity,omitempty" csv:"stock_quantity"`
+	ValidFrom                     string `json:"valid_from,omitempty" csv:"valid_from"`
+	ValidTo                       string `json:"valid_to,omitempty" csv:"valid_to"`
+	IsForSale                     string `json:"is_for_sale,omitempty" csv:"is_for_sale"`
+	WebOffer                      string `json:"web_offer,omitempty" csv:"web_offer"`
+	PreOrder                      string `json:"pre_order,omitempty" csv:"pre_order"`
+	StockStatus                   string `json:"stock_status,omitempty" csv:"stock_status"`
+	SizeStockStatus               string `json:"size_stock_status,omitempty" csv:"size_stock_status"`
+	SizeStockAmount               string `json:"size_stock_amount,omitempty" csv:"size_stock_amount"`
+	MerchantThumbUrl              string `json:"merchant_thumb_url,omitempty" csv:"merchant_thumb_url"`
+	LargeImage                    string `json:"large_image,omitempty" csv:"large_image"`
+	AlternateImage                string `json:"alternate_image,omitempty" csv:"alternate_image"`
+	AwThumbUrl                    string `json:"aw_thumb_url,omitempty" csv:"aw_thumb_url"`
+	AlternateImageTwo             string `json:"alternate_image_two,omitempty" csv:"alternate_image_two"`
+	AlternateImageThree           string `json:"alternate_image_three,omitempty" csv:"alternate_image_three"`
+	AlternateImageFour            string `json:"alternate_image_four,omitempty" csv:"alternate_image_four"`
+	Reviews                       string `json:"reviews,omitempty" csv:"reviews"`
+	AverageRating                 string `json:"average_rating,omitempty" csv:"average_rating"`
+	Rating                        string `json:"rating,omitempty" csv:"rating"`
+	NumberAvailable               string `json:"number_available,omitempty" csv:"number_available"`
+	Custom1                       string `json:"custom_1,omitempty" csv:"custom_1"`
+	Custom2                       string `json:"custom_2,omitempty" csv:"custom_2"`
+	Custom3                       string `json:"custom_3,omitempty" csv:"custom_3"`
+	Custom4                       string `json:"custom_4,omitempty" csv:"custom_4"`
+	Custom5                       string `json:"custom_5,omitempty" csv:"custom_5"`
+	Custom6                       string `json:"custom_6,omitempty" csv:"custom_6"`
+	Custom7                       string `json:"custom_7,omitempty" csv:"custom_7"`
+	Custom8                       string `json:"custom_8,omitempty" csv:"custom_8"`
+	Custom9                       string `json:"custom_9,omitempty" csv:"custom_9"`
+	Ean                           string `json:"ean,omitempty" csv:"ean"`
+	Isbn                          string `json:"isbn,omitempty" csv:"isbn"`
+	Upc                           string `json:"upc,omitempty" csv:"upc"`
+	Mpn                           string `json:"mpn,omitempty" csv:"mpn"`
+	ParentProductId               string `json:"parent_product_id,omitempty" csv:"parent_product_id"`
+	ProductGtin                   string `json:"product_gtin,omitempty" csv:"product_GTIN"`
+	BasketLink                    string `json:"basket_link,omitempty" csv:"basket_link"`
 }
