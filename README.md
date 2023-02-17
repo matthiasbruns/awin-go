@@ -1,6 +1,6 @@
 <div id="top"></div>
 <!--
-*** README templace provided by https://github.com/othneildrew/Best-README-Template
+*** README template provided by https://github.com/othneildrew/Best-README-Template
 -->
 
 
@@ -119,14 +119,14 @@ import (
 )
 
 func main() {
-	awinClient := awin.NewAwinClient(&http.Client{})
+	awinClient := awin.NewAwinClient("apiKey", &http.Client{})
 
 	fetchDataFeedList(awinClient)
 	fetchDataFeed(awinClient)
 }
 
 func fetchDataFeedList(awinClient *awin.AwinClient) {
-	feedList, err := awinClient.FetchDataFeedList("apiKey")
+	feedList, err := awinClient.FetchDataFeedList()
 
 	if err != nil {
 		panic(err)
@@ -137,7 +137,6 @@ func fetchDataFeedList(awinClient *awin.AwinClient) {
 
 func fetchDataFeed(awinClient *awin.AwinClient) {
 	feed, err := awinClient.FetchDataFeed(&awin.DataFeedOptions{
-		ApiKey:           "apiKey",
 		FeedIds:          []string{"feedId1", "feedId2"},
 		Language:         "en",
 		ShowAdultContent: false,
@@ -149,6 +148,7 @@ func fetchDataFeed(awinClient *awin.AwinClient) {
 
 	fmt.Println(feed)
 }
+
 
 ```
 
@@ -205,7 +205,7 @@ Use this space to list resources you find helpful and would like to give credit 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[build-shield]: https://img.shields.io/github/workflow/status/matthiasbruns/awin-go/Go/main?style=for-the-badge
+[build-shield]: https://img.shields.io/github/actions/workflow/status/matthiasbruns/awin-go/go.yml/main&style=for-the-badge
 [build-url]: https://github.com/matthiasbruns/awin-go/actions/workflows/go.yml
 [contributors-shield]: https://img.shields.io/github/contributors/matthiasbruns/awin-go.svg?style=for-the-badge
 [contributors-url]: https://github.com/matthiasbruns/awin-go/graphs/contributors

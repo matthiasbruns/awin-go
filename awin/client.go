@@ -52,26 +52,26 @@ func init() {
 }
 
 // DataFeedOptions
-/// ApiKey You can get the download API key from a standard feed download as given by Create-a-Feed. You can also get the full download link including the relevant API key to access this file from the Create-a-Feed section in the interface (Awin interface --> Toolbox --> Create-a-Feed).
-/// FeedIds The string slice of all publisher feed ids
-/// Language ISO 3166-1 alpha-2 – two-letter country codes e.g. de, en
-/// ShowAdultContent true to include adult content
+// / FeedIds The string slice of all publisher feed ids
+// / Language ISO 3166-1 alpha-2 – two-letter country codes e.g. de, en
+// / ShowAdultContent true to include adult content
 type DataFeedOptions struct {
-	ApiKey           string
 	FeedIds          []string
 	Language         string
 	ShowAdultContent bool
 }
 
 // AwinClient
-/// Client that takes over the communication with the Awin endpoints as well as parsing the response csv data into structs.
+// / client that takes over the communication with the Awin endpoints as well as parsing the response csv data into structs.
+// / apiKey You can get the download API key from a standard feed download as given by Create-a-Feed. You can also get the full download link including the relevant API key to access this file from the Create-a-Feed section in the interface (Awin interface --> Toolbox --> Create-a-Feed).
 type AwinClient struct {
 	client *http.Client
+	apiKey string
 }
 
-func (c AwinClient) FetchDataFeedList(apiKey string) (*[]DataFeedListRow, error) {
+func (c AwinClient) FetchDataFeedList() (*[]DataFeedListRow, error) {
 	// Get list of joined and not joined publishers
-	resp, err := c.client.Get(fmt.Sprintf(dataFeedListUrl, baseUrl, apiKey))
+	resp, err := c.client.Get(fmt.Sprintf(dataFeedListUrl, baseUrl, c.apiKey))
 	if err != nil {
 		return nil, err
 	}
@@ -86,7 +86,7 @@ func (c AwinClient) FetchDataFeed(options *DataFeedOptions) (*[]DataFeedEntry, e
 		showAdult = 1
 	}
 
-	url := fmt.Sprintf(dataFeedUrl, baseUrl, options.ApiKey, options.Language, strings.Join(options.FeedIds, ","), defaultDataFeedColumnsParam, ",", showAdult)
+	url := fmt.Sprintf(dataFeedUrl, baseUrl, c.apiKey, options.Language, strings.Join(options.FeedIds, ","), defaultDataFeedColumnsParam, ",", showAdult)
 
 	return c.FetchDataFeedFromUrl(url)
 }
@@ -146,10 +146,14 @@ func parseCSVToDataFeedEntry(r io.Reader) (*[]DataFeedEntry, error) {
 	return &entries, nil
 }
 
-// NewAwinClient
-/// Returns a new AwinClient. Needs a http.Client passed from outside.
-/// client Required to be passed from the caller
-/// returns a new instance of AwinClient
-func NewAwinClient(client *http.Client) *AwinClient {
-	return &AwinClient{client: client}
+func NewAwinClient(apiKey string, client *http.Client) *AwinClient {
+	return &AwinClient{client: client, apiKey: apiKey}
+}
+
+// NewAwinClientWithHzzp
+// / Returns a new NewAwinClientWithHzzp. Needs a http.Client passed from outside.
+// / client Required to be passed from the caller
+// / returns a new instance of AwinClient
+func NewAwinClientWithHttp(apiKey string, client *http.Client) *AwinClient {
+	return &AwinClient{client: client, apiKey: apiKey}
 }
