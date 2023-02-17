@@ -205,7 +205,7 @@ Use this space to list resources you find helpful and would like to give credit 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[build-shield]: https://img.shields.io/github/actions/workflow/status/matthiasbruns/awin-go/go.yml/main&style=for-the-badge
+[build-shield]: https://img.shields.io/github/actions/workflow/status/matthiasbruns/awin-go/go.yml?branch=main&style=for-the-badge
 [build-url]: https://github.com/matthiasbruns/awin-go/actions/workflows/go.yml
 [contributors-shield]: https://img.shields.io/github/contributors/matthiasbruns/awin-go.svg?style=for-the-badge
 [contributors-url]: https://github.com/matthiasbruns/awin-go/graphs/contributors
