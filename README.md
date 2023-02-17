@@ -119,14 +119,14 @@ import (
 )
 
 func main() {
-	awinClient := awin.NewAwinClient(&http.Client{})
+	awinClient := awin.NewAwinClient("apiKey", &http.Client{})
 
 	fetchDataFeedList(awinClient)
 	fetchDataFeed(awinClient)
 }
 
 func fetchDataFeedList(awinClient *awin.AwinClient) {
-	feedList, err := awinClient.FetchDataFeedList("apiKey")
+	feedList, err := awinClient.FetchDataFeedList()
 
 	if err != nil {
 		panic(err)
@@ -137,7 +137,6 @@ func fetchDataFeedList(awinClient *awin.AwinClient) {
 
 func fetchDataFeed(awinClient *awin.AwinClient) {
 	feed, err := awinClient.FetchDataFeed(&awin.DataFeedOptions{
-		ApiKey:           "apiKey",
 		FeedIds:          []string{"feedId1", "feedId2"},
 		Language:         "en",
 		ShowAdultContent: false,
@@ -149,6 +148,7 @@ func fetchDataFeed(awinClient *awin.AwinClient) {
 
 	fmt.Println(feed)
 }
+
 
 ```
 
